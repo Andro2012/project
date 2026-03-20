@@ -169,19 +169,7 @@ root.bind('<space>', my_pl.jump) #прыжок
 root.bind('<F1>', my_pl.coords) #Координаты игрока
 root.bind('<F2>', my_pl.screen_info)
 
-root.bind('<Escape>', func_exit) #выход из игры
-
-
-
-
-
-
-
-
-
-
-
-
+root.bind('<Escape>', func_exit) #выход из игры
 
 
 root.mainloop()
