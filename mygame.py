@@ -66,6 +66,7 @@ class Player_class():
             return
         
         else:
+            self.is_jumping = True
             self.jump_frames = 40
 
             print("UP")
@@ -79,18 +80,14 @@ class Player_class():
             print('jump')
 
     def jump_up(self, event = None):
-        if self.is_jumping:
-            return
-        
+        if self.jump_frames > 0:
+            self.y -= 1
+            self.place()
+            self.root.after(20, self.jump_up)
+            self.jump_frames -= 1
         else:
-            if self.jump_frames > 0:
-                self.y -= 1
-                self.place()
-                self.root.after(20, self.jump_up)
-                self.jump_frames -= 1
-            else:
-                self.jump_frames = 40
-                self.jump_falling()
+            self.jump_frames = 40
+            self.jump_falling()
 
     def jump_falling(self, event = None):
         if self.jump_frames > 0:
