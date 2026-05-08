@@ -2,6 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from threading import Event, Thread
 
+
 R = 10
 place_x = 500
 place_y = 450
@@ -66,18 +67,18 @@ class Player_class():
             return
         
         else:
+            self.root.unbind("<space>")
             self.is_jumping = True
             self.jump_frames = 40
 
+
+            self.jump_up()
             print("UP")
-            for i in range(self.jump_frames):
-                self.root.after(100, self.jump_up)
-                
-            print("FALL")
-            for i in range(self.jump_frames):
-                self.root.after(100, self.jump_falling)
+
 
             print('jump')
+            self.is_jumping = False
+            self.root.bind("<space>", self.jump)
 
     def jump_up(self, event = None):
         if self.jump_frames > 0:
@@ -95,14 +96,10 @@ class Player_class():
             self.place()
             self.root.after(20, self.jump_falling)
             self.jump_frames -= 1
-        else:
-            self.is_jumping = False
 
 
     def place(self, event = None):
         self.player.place(x = self.x, y = self.y)
-
-    
 
     def myfunc_e(self, event = None):
         print('Инвентарь в разработке...')
